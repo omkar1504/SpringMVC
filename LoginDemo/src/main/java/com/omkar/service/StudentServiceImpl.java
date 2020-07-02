@@ -30,4 +30,9 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.getAllStudents();
 	}
 
+	@Transactional
+	public Student getStudentById(int id) {
+		return studentDao.getStudentById(id);
+	}
+
 }

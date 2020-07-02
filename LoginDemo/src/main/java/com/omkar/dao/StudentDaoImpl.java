@@ -33,18 +33,17 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	public List<Student> getAllStudents() {
-		/*
-		 * Session session = sessionFactory.getCurrentSession(); List<Student> list =
-		 * session.createQuery("from Student").list(); for(Student student : list){
-		 * System.out.println("Student List::"+list); } return list;
-		 */
 
 		return sessionFactory.getCurrentSession().createQuery("from Student").list();
 	}
 
 	public Student getStudentById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Student where id=:id");
+		query.setParameter("id", id);
+
+		return (Student) query.getSingleResult();
 	}
 
 }
