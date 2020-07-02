@@ -123,7 +123,7 @@ public class StudentController {
 	}
 
 	@RequestMapping(value = "/getById/{id}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Student getEmployee(@PathVariable("id") int id, Model model) {
+	public @ResponseBody Student getStudent(@PathVariable("id") int id, Model model) {
 
 		Student student = studentService.getStudentById(id);
 		return student;
