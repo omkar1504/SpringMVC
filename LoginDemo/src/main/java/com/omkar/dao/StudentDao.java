@@ -11,4 +11,6 @@ public interface StudentDao {
 	public Student validate(String name, String password);
 	
 	public List<Student> getAllStudents();
+	
+	public Student getStudentById(int id);
 }
