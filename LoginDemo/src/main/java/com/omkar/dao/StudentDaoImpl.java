@@ -45,5 +45,4 @@ public class StudentDaoImpl implements StudentDao {
 
 		return (Student) query.getSingleResult();
 	}
-
 }

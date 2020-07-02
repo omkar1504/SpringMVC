@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -121,11 +122,14 @@ public class StudentController {
 		List<Student> list = studentService.getAllStudents();
 		return list;
 	}
-
-	@RequestMapping(value = "/getById/{id}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+	
+	@GetMapping(value = "/getById/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Student getStudent(@PathVariable("id") int id, Model model) {
 
 		Student student = studentService.getStudentById(id);
 		return student;
 	}
+	
+	
+	
 }
