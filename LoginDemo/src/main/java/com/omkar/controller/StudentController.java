@@ -157,4 +157,16 @@ public class StudentController {
 		return mv;
 	}
 
+	@RequestMapping(value = "/deleteStudent")
+	public ModelAndView deleteStud(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		Student student = new Student();
+		studentService.deleteStudent(id);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg", "student deleted successfully");
+		mv.setViewName("welcome");
+		
+		return mv;
+		
+	}
 }

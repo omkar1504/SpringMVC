@@ -46,4 +46,12 @@ public class StudentDaoImpl implements StudentDao {
 		sessionFactory.getCurrentSession().update(student);
 		return student;
 	}
+
+	public void deleteStudent(Integer id) {
+		Student student = sessionFactory.getCurrentSession().load(Student.class, id);
+		if(null != student) {
+			this.sessionFactory.getCurrentSession().delete(student);
+		}
+		
+	}
 }

@@ -15,4 +15,6 @@ public interface StudentService {
 	public Student getStudentById(int id);
 
 	public Student updateStudent(Student student);
+	
+	public void deleteStudent(Integer id);
 }

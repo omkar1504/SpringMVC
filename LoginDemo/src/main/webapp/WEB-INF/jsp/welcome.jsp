@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-Welcome, ${logStud.name}
+${msg}!!!
+</br></br>
+<a href="get">Show All Students</a>
 </body>
 </html>

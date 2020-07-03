@@ -40,4 +40,9 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.updateStudent(student);
 	}
 
+	@Transactional
+	public void deleteStudent(Integer id) {
+		studentDao.deleteStudent(id);
+	}
+
 }

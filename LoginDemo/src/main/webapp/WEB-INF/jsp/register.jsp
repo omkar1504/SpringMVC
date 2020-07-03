@@ -11,7 +11,8 @@
 	<form action="registerStudent" method="post">
 		Name : <input type="text" name="name"></br>
 	 	Password : <input type="password" name="password"></br> 
-	    <input type="submit" value="REGISTER">
+	    <input type="submit" value="REGISTER"></br>
+	    <a href="get">Show All Students</a>
 	</form>
 </body>
 </html>

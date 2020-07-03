@@ -16,4 +16,6 @@ public interface StudentDao {
 	
 	public Student updateStudent(Student student);
 	
+	public void deleteStudent(Integer id);
+	
 }
