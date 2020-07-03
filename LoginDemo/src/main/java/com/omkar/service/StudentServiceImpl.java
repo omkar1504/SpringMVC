@@ -45,4 +45,9 @@ public class StudentServiceImpl implements StudentService {
 		studentDao.deleteStudent(id);
 	}
 
+	@Transactional
+	public void update1(int id, Student student) {
+		studentDao.update1(id, student);
+	}
+
 }
