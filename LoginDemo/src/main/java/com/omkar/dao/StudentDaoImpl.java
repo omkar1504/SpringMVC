@@ -39,10 +39,11 @@ public class StudentDaoImpl implements StudentDao {
 
 	public Student getStudentById(int id) {
 
-		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from Student where id=:id");
-		query.setParameter("id", id);
+		return (Student) sessionFactory.getCurrentSession().get(Student.class, id);
+	}
 
-		return (Student) query.getSingleResult();
+	public Student updateStudent(Student student) {
+		sessionFactory.getCurrentSession().update(student);
+		return student;
 	}
 }

@@ -122,14 +122,39 @@ public class StudentController {
 		List<Student> list = studentService.getAllStudents();
 		return list;
 	}
-	
+
+	@RequestMapping(value = "/getById")
+	public ModelAndView getStudent1(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		Student student = studentService.getStudentById(id);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("student", student);
+		mv.setViewName("editStudent");
+
+		System.out.println(student);
+		return mv;
+	}
+
 	@GetMapping(value = "/getById/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Student getStudent(@PathVariable("id") int id, Model model) {
 
 		Student student = studentService.getStudentById(id);
 		return student;
 	}
-	
-	
-	
+
+	@RequestMapping("/updateStudent")
+	public ModelAndView updateStud(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+
+		Student student = new Student(id, name, password);
+		studentService.updateStudent(student);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("done", "Updated Student Successfully");
+		mv.setViewName("editStudent");
+
+		return mv;
+	}
+
 }
