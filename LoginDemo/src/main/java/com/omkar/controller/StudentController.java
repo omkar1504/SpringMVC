@@ -31,7 +31,6 @@ import com.omkar.service.StudentService;
 @Controller
 public class StudentController {
 
-	private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
 
 	@Autowired
 	StudentService studentService;
