@@ -11,36 +11,46 @@
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="com.omkar"></context:component-scan>
-	
+
+	<context:property-placeholder
+		location="classpath:application.properties" />
+
+
 	<mvc:annotation-driven></mvc:annotation-driven>
-	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/mini_project"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value="root"></property>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${database.driver}"></property>
+		<property name="url" value="${database.url}"></property>
+		<property name="username" value="${database.user}"></property>
+		<property name="password" value="${database.password}"></property>
 	</bean>
-	
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="packagesToScan" value="com.omkar.entity"></property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
 			</props>
 		</property>
 	</bean>
-	
-	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
+
 	<tx:annotation-driven
-	transaction-manager="transactionManager" />
+		transaction-manager="transactionManager" />
 </beans>
